@@ -10,8 +10,9 @@ from django.db import IntegrityError
 def question(request, question_id):
     if request.method == 'POST':
         code = request.POST.get('code')
-        a = Submissions.objects.create(code=code)
+        a = Submissions(user=request.user, code=code)
         a.save()
+        return HttpResponse("hahahahah")
     else:
         try:
             question = Questions.objects.get(id=question_id)

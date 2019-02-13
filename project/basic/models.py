@@ -18,4 +18,5 @@ class UserProfile(models.Model):
 
 class Submissions(models.Model):
     code = models.TextField()
-    user = models.ForeignKey(User, default=' ', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    abc = models.IntegerField()
