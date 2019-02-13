@@ -37,7 +37,10 @@ def register(request):
         b = UserProfile()
         b.user = a
         b.save()
-        all_questions = Questions.objects.all()
-        context = {'all_questions': all_questions}
-        return render(request, 'basic/questions.html', context)
+        return index(request)
+        #return HttpResponseRedirect(reverse('index'))
     return render(request, 'basic/Login.html')
+
+
+def welcome(request):
+    return render(request, 'basic/Welcome.html')
