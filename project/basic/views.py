@@ -5,11 +5,22 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+import os
+path = 'data/codes'
 
 
 def question(request, question_id):
     if request.method == 'POST':
+        user = request.user
+        #if not os.path.exists('{}/{}'.format(path, user)):
+            #attempts = 0
+        for i in range(1, 7):
+            os.system('mkdir {}/{}/question{}'.format(path, user, i))
+        #attempts += 1
+#        f = open('{}/{}/question{}/{}.cpp'.format(path, user, question_id, attempts))
         code = request.POST.get('code')
+ #       f.write(code)
+  #      f.close()
         a = Submissions(user=request.user, code=code)
         a.save()
         return HttpResponse("hahahahah")
