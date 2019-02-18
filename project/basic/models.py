@@ -14,6 +14,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstname = models.CharField(max_length=100)
     question = models.ManyToManyField(Questions)
+    attempts = models.IntegerField(default=0)
 
 
 class Submissions(models.Model):

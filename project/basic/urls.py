@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^basic/$', views.register, name='register'),
     url(r'^basic/(?P<question_id>[0-9])/$', views.question, name='question'),
     url(r'^basic/oops/$', views.index, name='index'),
-    path('', views.welcome)
+    path('', views.welcome),
+    path('basic/e_login', views.e_login, name='e_login')
 ]
