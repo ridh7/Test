@@ -14,12 +14,12 @@ global attempts
 def question(request, question_id):
     if request.method == 'POST':
         user = request.user
-        user1 = UserProfile()
-        user1.user = user
+        user1 = UserProfile.objects.get(user=request.user)
         if not os.path.exists('{}/{}'.format(path, user)):
             for i in range(1, 7):
                 os.system('mkdir {}\\{}\\question{}'.format(path, user, i))
         user1.attempts = user1.attempts + 1
+        user1.save()
         f = open('{}\\{}\\question{}\\{}.cpp'.format(path, user, question_id, user1.attempts), 'w')
         code = request.POST.get('code')
         f.write(code)
